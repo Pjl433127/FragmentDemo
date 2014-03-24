@@ -1,0 +1,184 @@
+//建立数字类型的循环单链表
+LinkList Create_Linklist()
+{
+ LinkList  L1 = null;
+ Lnode *s，*r= null;
+ int e;
+ scanf("%d",&e);
+ while(e!=flag)
+   {
+	s = malloc(sizeof(LNode));
+	s->data = e;
+	if(L1 = null) L1 = s;
+	else r ->next = s;
+	r = s;
+	scanf("%d",&e);
+   }
+ if((r ->next == null)) s = r ->next; 
+ return L1;
+}
+
+
+//建立字母类型的循环单链表
+LinkList Create_Linklist()
+{
+ LinkList  L2 = null;
+ Lnode *s2, *r2 = null;
+ char ch;
+ scanf("%c",&ch);
+ while(ch != flag)
+   {
+	s2 = malloc(sizeof(LNode));
+	s2->data = ch;
+	s2->next = r2;;
+	r2=s2;
+	scanf("%c",&ch);
+   }
+ if( r2->next == null) r2 ->next = s2; 
+ return L2;
+}
+
+//建立其他字符的循环单链表
+LinkList Create_LinkList()
+{
+  LinkList L3 = null;
+  Lnode *s3,*r3 = null;
+  char others;
+  scanf("%c",&others);
+  while(others != flag)
+    {
+	s3 = malloc(sizeof(LNode));
+	s3->data = ch;
+	s3->next = r2;;
+	r3=s3;
+	scanf("%c",&others);
+    }
+ if( r3->next == null) r3 ->next = s3; 
+ return L3;
+}
+
+
+//将原链表的各种元素相应的归类
+while(h->data)
+{
+  if(h->data >= 48 && h->data <= 57)//数字归类
+   {
+      s->data = h->data;
+      q = h;
+      h = h->next;
+      free(h); 
+      s=s->next;  //表L1的头指针指向第二个节点
+      
+   }
+   else if(h->data >=65&& h->data <=90 || h->data >=97 && h->data <=122)//字母归类
+    {
+	s2->data = h->data;
+	q = h;
+	h= h->next;
+	free(h);
+	s2 = s2->next;
+    } 
+    else
+    {
+	s3->data = h ->data;
+	q=h;
+	h = h->next;
+	free(h);
+	s3 = s3->next;
+    }
+     
+}  
+
+
+
+
+
+
+
+
+
+
+#include<iostream>
+using namespace std;
+typedef struct node
+{
+	char data;
+	struct node *next;
+}LNode,*LinkList;
+void Printf_List(LinkList L)
+{
+	int i=1;
+	LNode *p;
+	p=L;
+	while(p->next!=L)
+	{
+		cout<<p->data<<" ";
+		if(i%5==0) cout<<endl;
+		i++;
+		p=p->next;
+    }
+	if(p->next==L)
+		cout<<p->data<<endl;
+
+}
+
+int main()
+{
+   char ch;
+   LinkList L=NULL,Lnum=NULL,Lchar=NULL,Lother=NULL,p,s,r=NULL;
+   LNode *Ln_tail=NULL,*Lch_tail=NULL,*Lo_tail=NULL;             // 分别对应3个链表的尾指针
+   cout<<"建立初始链表L,请输入数据，以 # 作为结束标志"<<endl;
+   while(cin>>ch)
+   {
+	   if(ch=='#')break;
+	   p=new LNode;
+	   p->next=NULL;
+	   p->data=ch;
+	   if(L==NULL) L=p;
+	       else r->next=p;
+	   r=p;
+   }
+   if(r!=NULL)
+	   r->next=NULL;
+    p=L;
+   while(p)
+   {
+	   if(p->data >='0'&&p->data<='9')
+	   {
+		   s=new LNode;
+		   s->data=p->data;
+		   if(Lnum==NULL) Lnum=s;
+		   else Ln_tail->next=s;
+		   Ln_tail=s;		   
+	   }
+	   else if(p->data>='a'&&p->data<='z'||p->data>='A'&&p->data<='Z')
+	   {
+		   s=new LNode;
+		   s->data=p->data;
+		   if(Lchar==NULL) Lchar=s;
+		   else Lch_tail->next=s;
+		   Lch_tail=s;
+	   }
+	   else
+	   {
+		   s=new LNode;
+		   s->data=p->data;
+		   if(Lother==NULL) Lother=s;
+		   else Lo_tail->next=s;
+		   Lo_tail=s;
+	   }
+	   p=p->next;
+	   
+   }
+   if(Ln_tail!=NULL)  Ln_tail->next=Lnum;
+   if(Lch_tail!=NULL)Lch_tail->next=Lchar;
+   if(Lo_tail!=NULL) Lo_tail->next=Lother;
+
+/************输出**********************/
+  Printf_List(Lnum);
+  Printf_List(Lchar);
+  Printf_List(Lother);
+
+
+}
+

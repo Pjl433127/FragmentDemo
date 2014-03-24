@@ -1,0 +1,11 @@
+void delete_Element()
+{
+	LinkList *L;
+	while(L->data)
+	  {
+	      if(L->data > mink && L->data < maxk)
+		L = L->next;
+	 	p = L;
+		free(L);
+	   }
+}

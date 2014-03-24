@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+#define MAXSIZE 50
+void Divide_list(int a[],int L)
+{
+    int i,k=0,j=L-1;
+	int b[MAXSIZE];
+    for(i=0;i<L;i++)
+	{
+		if(a[i]%2!=0)
+		{
+			b[k]=a[i];
+			k++;
+		}
+		else
+		{
+			b[j]=a[i];
+			j--;
+		}
+	}
+	cout<<"分类后的结果为："<<endl;
+	for(i=0;i<L;i++)
+	{ 
+		cout<<b[i]<<" ";
+		if((i+1)%5==0)
+			cout<<endl;
+	}
+	cout<<endl;
+}
+
+int main()
+{
+	int i,L,a[MAXSIZE];
+	cout<<"请输入数组的长度L<50:"<<endl;
+	cin>>L;
+	cout<<"请输入数组a[]:"<<endl;
+	for(i=0;i<L;i++)
+		cin>>a[i];
+	Divide_list(a,L);
+	return 0;
+
+}
